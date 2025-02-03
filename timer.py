@@ -34,6 +34,7 @@ def stop_timer():
         
         # Copy to clipboard
         pyperclip.copy(minutes)
+        change_sysincon_hover(end_time.strftime("%d/%m/%Y %I:%M %p"))
         
         is_running = False
         start_time = None
@@ -45,6 +46,7 @@ def change_sysincon_color(newicon):
 def change_sysincon_hover(newmsg):
     global sysicon2
     sysicon2.update(hover_text=newmsg)
+    
 
 def on_key_event(event):
     global start_time, file
@@ -52,7 +54,6 @@ def on_key_event(event):
     if key == '~' and all(keyboard.is_pressed(mod) for mod in modifiers):
         change_sysincon_color('green.ico')
         start_timer()
-        change_sysincon_hover(str(start_time))
 
     elif key == '|' and all(keyboard.is_pressed(mod) for mod in modifiers):
         change_sysincon_color('red.ico')
