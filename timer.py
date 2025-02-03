@@ -2,8 +2,6 @@ import datetime
 import pyperclip
 import keyboard
 from infi.systray import SysTrayIcon
-import csv
-import os
 
 # Initialize variables
 start_time = None
