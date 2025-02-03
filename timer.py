@@ -30,7 +30,7 @@ def stop_timer():
         
         # Format the results
         #result = f"{minutes:.0f} minutes {end_time.strftime("%d/%m/%Y %I:%M %p")}"
-        print(minutes)
+        print(f"time elapsed during this section: {minutes}")
         
         # Copy to clipboard
         pyperclip.copy(minutes)
