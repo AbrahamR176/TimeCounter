@@ -17,6 +17,7 @@ def start_timer():
         start_time = datetime.datetime.now()
         print("Timer started at:", start_time.strftime("%d/%m/%Y %I:%M %p"))
         is_running = True
+        change_sysincon_hover(start_time.strftime("%d/%m/%Y %I:%M %p"))
 
 def stop_timer():
     global start_time, is_running
