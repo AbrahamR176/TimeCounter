@@ -2,11 +2,12 @@ import datetime
 import pyperclip
 import keyboard
 from infi.systray import SysTrayIcon
+import csv
+import os
 
 # Initialize variables
 start_time = None
 is_running = False
-
 sysicon2 = SysTrayIcon(icon="red.ico", hover_text="None")
 
 # Modifier keys
@@ -27,14 +28,14 @@ def stop_timer():
         
         # Calculate elapsed time in minutes
         delta = end_time - start_time
-        minutes = delta.total_seconds() / 60
+        minutes = round(delta.total_seconds() / 60)
         
         # Format the results
-        result = f"{minutes:.0f} minutes {end_time.strftime("%d/%m/%Y %I:%M %p")}"
-        print(result)
+        #result = f"{minutes:.0f} minutes {end_time.strftime("%d/%m/%Y %I:%M %p")}"
+        print(minutes)
         
         # Copy to clipboard
-        pyperclip.copy(result)
+        pyperclip.copy(minutes)
         
         is_running = False
         start_time = None
@@ -48,7 +49,7 @@ def change_sysincon_hover(newmsg):
     sysicon2.update(hover_text=newmsg)
 
 def on_key_event(event):
-    global start_time
+    global start_time, file
     key = event.name
     if key == '~' and all(keyboard.is_pressed(mod) for mod in modifiers):
         change_sysincon_color('green.ico')
